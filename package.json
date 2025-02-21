@@ -1,0 +1,33 @@
+{
+  "name": "task-manager-app",
+  "version": "1.0.0",
+  "description": "Task manager app",
+  "main": "src/index.ts",
+  "scripts": {
+    "serve": "vite src/client -c vite.config.ts",
+    "dev": "tsx src/server/index.ts",
+    "build": "tsc -p tsconfig.json"
+  },
+  "author": "Rykov Dmitrii",
+  "license": "MIT",
+  "dependencies": {
+    "effector": "^23.3.0",
+    "effector-react": "^23.3.0",
+    "express": "^4.21.2",
+    "pg": "^8.13.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^6.28.0",
+    "react-router-dom": "^6.27.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  }
+}
