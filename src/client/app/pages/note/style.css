@@ -1,0 +1,53 @@
+.page {
+    display: grid;
+    grid-template-rows: 2em 1.7em 1fr 3em;
+}
+
+.note-page__editor {
+    display: flex;
+    flex-direction: column;
+    gap: .7em;
+}
+
+.note-editor__tools {
+    display: flex;
+    flex-direction: row;
+}
+.note-page__workspace {
+    display: flex;
+    flex-direction: column;
+    gap: .7em;
+    flex-grow: 1;
+}
+
+.workspace__title {
+    font-size: 1.4em;
+}
+
+.workspace__content {
+    font-size: 1.2em;
+    flex-grow: 1;
+    resize: none;
+}
+.note {
+    width: 720px;
+    border: 1px solid gray;
+}
+
+.note-item__list {
+    display: flex;
+    flex-direction: column;
+}
+
+.note-item {
+    display: flex;
+    flex-direction: row;
+    gap: .7em;
+}
+
+.note-item__title {
+    display: block;
+    flex-grow: 1;
+}
+.note-item__dates {
+}

@@ -10,9 +10,10 @@ export const TodoPage = () => {
 
     return (<section>
         <h2>Todo's</h2>
-        <div className="todo-list">
+        {todos.length === 0 && (<h3>Empty</h3>)}
+        {todos.length > 0 && (<div className="todo-list">
             {todos.map((todo: TodoItem) => (<TodoListItem key={todo.id} { ...todo } />))}
-        </div>
+        </div>) }
         { activeTodoId ? <EditTodoForm itemId={activeTodoId} /> : <AddTodoForm />}
     </section>)
 }

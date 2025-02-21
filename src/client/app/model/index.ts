@@ -1,20 +1,104 @@
 import { createEvent, createStore } from "effector";
-import { TodoItem } from "../../types";
+import { NoteItem, TodoItem } from "../../types";
 
 export const $activeTodoId = createStore<TodoItem["id"] | null>(null);
 export const selectTodo = createEvent<TodoItem["id"] | null>();
 export const $todos = createStore<Array<TodoItem>>([
     {
-        completed: false,
         id: crypto.randomUUID(),
-        title: "First todo",
-        description: "Description"
+        title: "First",
+        description: "Second",
+        completed: false
     },
     {
-        completed: true,
         id: crypto.randomUUID(),
-        title: "Second todo",
-        description: "Description"
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "First",
+        description: "Second",
+        completed: false
     }
 ]);
 export const addTodo = createEvent<Omit<TodoItem, "id" | "completed">>();
@@ -46,5 +130,40 @@ $todos
         });
     });
 
-$activeTodoId.on(selectTodo, (prev, id) => id);
-export const $notes = createStore([]);
+$activeTodoId.on(selectTodo, (_, id) => id);
+
+export const $notes = createStore<Array<NoteItem>>([]);
+export const addNote = createEvent<Omit<NoteItem, "createdAt" | "updatedAt">>();
+export const deleteNote = createEvent<NoteItem["id"]>();
+export const editNote = createEvent<Omit<NoteItem, "createdAt" | "updatedAt">>();
+
+export const $activeNote = createStore<Partial<NoteItem> | null>(null);
+export const selectNote = createEvent<Partial<NoteItem> | null>();
+
+$notes
+    .on(addNote, (prev, note) => {
+        const newNote = {
+            ...note,
+            id: note.id || crypto.randomUUID() as string,
+            createdAt: Date.now(),
+            updatedAt: Date.now()
+        }
+
+        return [...prev, newNote];
+    })
+    .on(deleteNote, (prev, payload) => {
+        return prev.filter(({ id }) => id !== payload);
+    })
+    .on(editNote, (prev, payload) => {
+        return prev.map((note) => {
+            if (note.id === payload.id) {
+                return ({
+                    ...note,
+                    ...payload
+                });
+            } else return note;
+        });
+    });
+
+$activeNote
+    .on(selectNote, (_, payload) => payload);
