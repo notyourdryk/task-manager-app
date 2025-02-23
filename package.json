@@ -5,7 +5,7 @@
   "main": "src/index.tsx",
   "scripts": {
     "serve": "vite src -c vite.config.ts",
-    "build": "vite build src --outDir ../build --emptyOutDir"
+    "build": "vite build src --outDir ../build --emptyOutDir -c vite.config.ts"
   },
   "author": "Rykov Dmitrii",
   "license": "MIT",
