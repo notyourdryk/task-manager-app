@@ -2,11 +2,10 @@
   "name": "task-manager-app",
   "version": "1.0.0",
   "description": "Task manager app",
-  "main": "src/index.ts",
+  "main": "src/index.tsx",
   "scripts": {
-    "serve": "vite src/client -c vite.config.ts",
-    "dev": "tsx src/server/index.ts",
-    "build": "tsc -p tsconfig.json"
+    "serve": "vite src -c vite.config.ts",
+    "build": "vite build src --outDir ../build --emptyOutDir"
   },
   "author": "Rykov Dmitrii",
   "license": "MIT",
