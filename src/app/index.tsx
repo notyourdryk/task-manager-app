@@ -4,11 +4,13 @@ import { MainPage, TodoPage, NotePage } from "./pages";
 
 import "../style.css";
 
+const basePath = window.location.pathname.replace(/(\/[^/]+)$/, "");
+
 export const App = () => {
     return (
         <div className="app">
             <h2>Task manager app</h2>
-            <BrowserRouter>
+            <BrowserRouter basename={basePath}>
                 <nav className="nav-list__container">
                     <ul className="nav-list">
                         <li><Link to="/">Home</Link></li>
