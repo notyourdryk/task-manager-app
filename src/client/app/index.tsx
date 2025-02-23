@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { MainPage } from "./pages/main";
-import { TodoPage } from "./pages/todo";
-import { NotePage } from "./pages/note";
+import { MainPage, TodoPage, NotePage } from "./pages";
 
 import "../style.css";
 

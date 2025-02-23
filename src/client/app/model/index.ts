@@ -3,104 +3,7 @@ import { NoteItem, TodoItem } from "../../types";
 
 export const $activeTodoId = createStore<TodoItem["id"] | null>(null);
 export const selectTodo = createEvent<TodoItem["id"] | null>();
-export const $todos = createStore<Array<TodoItem>>([
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "First",
-        description: "Second",
-        completed: false
-    }
-]);
+export const $todos = createStore<Array<TodoItem>>([]);
 export const addTodo = createEvent<Omit<TodoItem, "id" | "completed">>();
 export const deleteTodo = createEvent<TodoItem["id"]>();
 export const editTodo = createEvent<Partial<TodoItem>>();
@@ -133,11 +36,13 @@ $todos
 $activeTodoId.on(selectTodo, (_, id) => id);
 
 export const $notes = createStore<Array<NoteItem>>([]);
+
 export const addNote = createEvent<Omit<NoteItem, "createdAt" | "updatedAt">>();
 export const deleteNote = createEvent<NoteItem["id"]>();
 export const editNote = createEvent<Omit<NoteItem, "createdAt" | "updatedAt">>();
 
 export const $activeNote = createStore<Partial<NoteItem> | null>(null);
+
 export const selectNote = createEvent<Partial<NoteItem> | null>();
 
 $notes
