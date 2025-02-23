@@ -1,6 +1,5 @@
 {
   "name": "task-manager-app",
-  "homepage": "https://notyourdryk.github.io/task-manager-app",
   "version": "1.0.0",
   "description": "Task manager app",
   "main": "src/index.tsx",
