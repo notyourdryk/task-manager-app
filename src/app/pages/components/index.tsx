@@ -59,8 +59,7 @@ export const EditTodoForm = ({ itemId }: { itemId: string }) => {
     const handleSubmit = (ev: FormEvent) => {
         ev.preventDefault();
         editTodo({ id, title, description });
-        setTitle("");
-        setDescription("");
+        selectTodo(null);
     }
 
     useEffect(() => {

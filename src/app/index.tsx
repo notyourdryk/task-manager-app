@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { MainPage, TodoPage, NotePage } from "./pages";
 
 import "../style.css";
+import { getTodos } from "../db";
+import { fetchNotesEx, fetchTodosEx } from "./model";
 
 const basePath = window.location.pathname.replace(/(\/[^/]+)$/, "");
 
 export const App = () => {
+    useEffect(() => {
+        void fetchTodosEx();
+        void fetchNotesEx();
+        console.log("Initialize todos and notes");
+    }, []);
     return (
         <div className="app">
             <h2>Task manager app</h2>

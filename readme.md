@@ -5,3 +5,4 @@ No backend.
 SPA.
 Service workers.
 Browser and device api only.
+IndexedDB as storage.
