@@ -1,7 +1,23 @@
 import { createEffect, createEvent, createStore, sample } from "effector";
-import { NoteItem, TodoItem } from "../../types";
+import { AuthorizationParams, NoteItem, TodoItem } from "../../types";
 import { getNotes, getTodos } from "../../db";
 import * as db from "../../db";
+import * as api from "../../api";
+
+export const $isAuthorized = createStore(false);
+export const authorizeUser = createEvent<AuthorizationParams>();
+export const authorizeUserFx = createEffect(api.authorization);
+
+sample({
+    source: $isAuthorized,
+    clock: authorizeUser,
+    fn: (_, { username, password }: { username: string, password: string }) => ({
+        username, password
+    }),
+    target: authorizeUserFx
+});
+
+$isAuthorized.on(authorizeUserFx.doneData, (_, payload) => payload);
 
 export const $activeTodoId = createStore<TodoItem["id"] | null>(null);
 export const selectTodo = createEvent<TodoItem["id"] | null>();
@@ -118,13 +134,8 @@ sample({
     target: editNoteFx
 });
 $notes
-    .on(addNoteFx.doneData, (prev, note) => {
-        console.log(`Note = ${note}`);
-        return [...prev, note];
-    })
-    .on(deleteNoteFx.doneData, (prev, payload) => {
-        return prev.filter(({ id }) => id !== payload);
-    })
+    .on(addNoteFx.doneData, (prev, note) => ([...prev, note]))
+    .on(deleteNoteFx.doneData, (prev, payload) => prev.filter(({ id }) => id !== payload))
     .on(editNoteFx.doneData, (prev, payload) => {
         return prev.map((note) => {
             if (note.id === payload.id) return payload

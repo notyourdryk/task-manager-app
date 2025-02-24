@@ -1,3 +1,8 @@
+export type AuthorizationParams = {
+    username: string;
+    password: string;
+}
+
 export type TodoItem = {
     title: string;
     description: string;

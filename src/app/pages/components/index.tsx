@@ -1,8 +1,9 @@
 import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
 import "./style.css";
-import { $todos, addTodo, deleteTodo, editTodo, selectTodo } from "../../model";
+import { $isAuthorized, $todos, addTodo, deleteTodo, editTodo, selectTodo } from "../../model";
 import { TodoItem } from "../../../types";
 import { useUnit } from "effector-react";
+import { Navigate, Outlet } from "react-router-dom";
 
 export const AddTodoForm = () => {
     const [title, setTitle] = useState("");
@@ -106,3 +107,9 @@ export const TodoListItem = ({ title, description, id, completed }: TodoItem) =>
         <button onClick={ handleEditClick }>edit</button>
     </div>);
 }
+
+export const ProtectedRoute = () => {
+    const isAuthorized = useUnit($isAuthorized);
+
+    return isAuthorized ? <Outlet /> : <Navigate to="/login" />;
+};

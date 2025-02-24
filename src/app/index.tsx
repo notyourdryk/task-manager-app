@@ -1,19 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { MainPage, TodoPage, NotePage } from "./pages";
+import { MainPage, TodoPage, NotePage, LoginPage } from "./pages";
 
 import "../style.css";
-import { getTodos } from "../db";
 import { fetchNotesEx, fetchTodosEx } from "./model";
+import { ProtectedRoute } from "./pages/components";
+import { RegistrationPage } from "./pages/registration";
 
 const basePath = window.location.pathname.replace(/(\/[^/]+)$/, "");
+const protectedRoutes = [
+    "/",
+    "/note",
+    "/todo"
+];
 
 export const App = () => {
     useEffect(() => {
         void fetchTodosEx();
         void fetchNotesEx();
-        console.log("Initialize todos and notes");
     }, []);
+
     return (
         <div className="app">
             <h2>Task manager app</h2>
@@ -26,9 +32,13 @@ export const App = () => {
                     </ul>
                 </nav>
                 <Routes>
-                    <Route path="/" Component={ MainPage }/>
-                    <Route path="/todo" Component={ TodoPage }/>
-                    <Route path="/note" Component={ NotePage }/>
+                    <Route path="/login" Component={ LoginPage }/>
+                    <Route path="/register" Component={ RegistrationPage } />
+                    <Route element={<ProtectedRoute />}>
+                        <Route index path="/" Component={ MainPage }/>
+                        <Route path="/todo" Component={ TodoPage }/>
+                        <Route path="/note" Component={ NotePage }/>
+                    </Route>
                 </Routes>
             </BrowserRouter>
             <footer className="app__footer">

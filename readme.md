@@ -1,8 +1,8 @@
 # SPA Task manager
 
 ## Requirements
-No backend.
-SPA.
-Service workers.
-Browser and device api only.
-IndexedDB as storage.
+ - No backend
+ - SPA
+ - Service workers.
+ - Browser and device api only
+ - IndexedDB as storage
