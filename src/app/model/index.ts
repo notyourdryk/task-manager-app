@@ -4,7 +4,7 @@ import { getNotes, getTodos } from "../../db";
 import * as db from "../../db";
 import * as api from "../../api";
 
-export const $isAuthorized = createStore(false);
+export const $isAuthorized = createStore(true);
 export const authorizeUser = createEvent<AuthorizationParams>();
 export const authorizeUserFx = createEffect(api.authorization);
 
