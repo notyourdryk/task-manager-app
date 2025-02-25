@@ -5,7 +5,10 @@ import { TodoItem } from "../../../types";
 import { useUnit } from "effector-react";
 import { Navigate, Outlet } from "react-router-dom";
 
-export const AddTodoForm = () => {
+type AddTodoFormProps = {
+    onCancel: () => void;
+}
+export const AddTodoForm = (props: AddTodoFormProps) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [disabled, setDisabled] = useState(true);
@@ -37,6 +40,7 @@ export const AddTodoForm = () => {
             <textarea value={ description } onChange={ handleDescriptionChange } name="description" required/>
         </div>
         <button disabled={ disabled } type="submit">Add</button>
+        <button onClick={props.onCancel}>Cancel</button>
     </form>);
 };
 
@@ -94,10 +98,7 @@ export const TodoListItem = ({ title, description, id, completed }: TodoItem) =>
     const handleDeleteClick = () => deleteTodo(id);
     const handleEditClick = () => selectTodo(id)
     const handleCheck = useCallback(() => {
-        editTodo({
-            id,
-            completed: !completed,
-        });
+        editTodo({ id, completed: !completed });
     }, [id, completed]);
 
     return (<div className={ `todo-list__item${ completed ? " todo-list__item--completed" : "" }` }>

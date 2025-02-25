@@ -21,11 +21,7 @@ export const NoteEditor = ({ title, id, content }: Partial<NoteItem>) => {
         if (!id) {
             addNote({ id: "", title: noteTitle, content: noteContent });
         } else {
-            editNote({
-                id,
-                title: noteTitle,
-                content: noteContent
-            });
+            editNote({ id, title: noteTitle, content: noteContent });
         }
         selectNote(null);
         setNoteTitle("");

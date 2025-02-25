@@ -13,6 +13,10 @@
     display: flex;
     flex-direction: row;
 }
+
+.note-page__button--add {
+    width: 100%;
+}
 .note-page__workspace {
     display: flex;
     flex-direction: column;

@@ -11,7 +11,7 @@ export const NotePage = () => {
     const activeNote = useUnit($activeNote);
 
     return (<section className="page">
-        <h2>Notes</h2>
+        <h2>Note's</h2>
         {!activeNote && <NoteTools /> }
         {!activeNote && <div className="note-item__list">
             {!activeNote && notes.map(note => <NoteListItem key={note.id} {...note} />)}

@@ -18,15 +18,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 .app__container {
 }
+
 .app__footer {
     border-top: 1px solid gray;
     margin-top: 1em;
     height: 3em;
+    box-sizing: border-box;
 }
+
 .app {
     width: 720px;
     margin: 0 auto;
     min-height: 100vh;
     display: grid;
     grid-template-rows: 3em 5em auto 4em;
+}
+
+@media screen and (max-width: 767.98px) {
+    .app {
+        width: 100%;
+        padding: .3em .2em;
+        box-sizing: border-box;
+    }
 }

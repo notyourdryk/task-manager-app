@@ -9,7 +9,12 @@
 
 ## TODO
 
- - [ ] Test over logic
- - [ ] Test over UI
- - [ ] Clean up code
- - [ ] UI improvements 
+ - [ ] Test over logic (1)
+ - [ ] Test over UI    (2)
+ - [ ] Clean up code   (3)
+ - [ ] UI improvements (4)
+ - [ ] User login/password
+
+## Work items
+
+1. Which test and over which logic exactly?
