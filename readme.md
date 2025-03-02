@@ -1,5 +1,7 @@
 # SPA Task manager
 
+[Demo](https://notyourdryk.github.io/task-manager-app)
+
 ## Requirements
 
  - No backend
